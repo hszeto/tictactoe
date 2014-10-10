@@ -1,0 +1,38 @@
+body{
+	text-align: center;
+	width: 100%;
+	font-family: Arial;
+}
+
+#container{
+	width: 960px;
+	margin: 0 auto;
+}
+
+#top_div{
+	background-color: darkgrey;
+	width: 960px;
+	margin-bottom: 10px;
+}
+
+#left_div{
+	background-color: lightgrey;
+	width: 200px;
+	float: left;
+	margin-right: 5px;
+}
+
+#mid_div{
+	background-color: silver;
+	width: 540px;
+	float: left;
+	margin-right: 5px;
+	margin-left: 5px;
+}
+
+#right_div{
+	background-color: lightgrey;
+	width: 200px;
+	float: left;
+	margin-left: 5px
+}
