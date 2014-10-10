@@ -17,14 +17,14 @@ body{
 
 #left_div{
 	background-color: lightgrey;
-	width: 200px;
+	width: 245px;
 	float: left;
 	margin-right: 5px;
 }
 
 #mid_div{
 	background-color: silver;
-	width: 540px;
+	width: 450px;
 	float: left;
 	margin-right: 5px;
 	margin-left: 5px;
@@ -32,7 +32,18 @@ body{
 
 #right_div{
 	background-color: lightgrey;
-	width: 200px;
+	width: 245px;
 	float: left;
 	margin-left: 5px
+}
+
+.cell {
+	width: 146px; 
+	height: 146px; 
+	float: left; 
+	border: 2px dashed lightgrey;
+}
+			
+.clearFix {
+	clear:both;
 }

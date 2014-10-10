@@ -4,11 +4,11 @@
 	<title>Tic Tac Toe 10/10</title>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
-	<script src="js/app.js"></script>
+	<script src="js/main.js"></script>
 </head>
-<body>
+<body ng-controller="TTTController">
 <div id="container">
-	
+
 	<div id="top_div">
 		<h1>Tic Tac Toe</h1>
 		<h2>Let's play a game!</h2>
@@ -20,6 +20,11 @@
 
 	<div id="mid_div">
 		<h2>The Board</h2>
+		<div 	class = "cell" 
+				ng-repeat = "eachCell in board" 
+				ng-class = "{clearFix: (eachCell.pt == 8) || (eachCell.pt == 64)}"
+		 		ng-click = "playerPicks(eachCell)">{{eachCell.status}}, {{eachCell.pt}} point
+		 </div>
 	</div>
 
 	<div id="right_div">
