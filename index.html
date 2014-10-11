@@ -15,7 +15,7 @@
 	</div>
 
 	<div id="left_div">
-		<h2>Player 1</h2>
+		<h2>Player X</h2>
 	</div>
 
 	<div id="mid_div">
@@ -23,12 +23,13 @@
 		<div 	class = "cell" 
 				ng-repeat = "eachCell in board" 
 				ng-class = "{clearFix: (eachCell.pt == 8) || (eachCell.pt == 64)}"
-		 		ng-click = "playerPicks(eachCell)">{{eachCell.status}}, {{eachCell.pt}} point
+		 		ng-click = "playerPicks(eachCell)">
+					{{eachCell.status}}, {{eachCell.pt}} point, {{moveCounter}} valid click, O point {{oPoint}}, X point {{xPoint}}
 		 </div>
 	</div>
 
 	<div id="right_div">
-		<h2>Player 2</h2>
+		<h2>Player O</h2>
 	</div>
 
 </div>
