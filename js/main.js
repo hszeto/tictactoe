@@ -31,14 +31,14 @@ $scope.playerPicks = function(thisCell){
 			} 
 
 			switch($scope.xPoint){
-				case 7 : thisCell.status = "X WINS!"; break;
-				case 56 : thisCell.status = "X WINS!"; break;
-				case 73 : thisCell.status = "X WINS!"; break;
-				case 84 : thisCell.status = "X WINS!"; break;
-				case 146: thisCell.status = "X WINS!"; break;
-				case 273: thisCell.status = "X WINS!"; break;
-				case 296: thisCell.status = "X WINS!"; break;
-				case 448: thisCell.status = "X WINS!"; break;
+				case 7 : thisCell.status = "X WINS!"; $scope.moveCounter = 9; break;
+				case 56 : thisCell.status = "X WINS!"; $scope.moveCounter = 9; break;
+				case 73 : thisCell.status = "X WINS!"; $scope.moveCounter = 9; break;
+				case 84 : thisCell.status = "X WINS!"; $scope.moveCounter = 9; break;
+				case 146: thisCell.status = "X WINS!"; $scope.moveCounter = 9; break;
+				case 273: thisCell.status = "X WINS!"; $scope.moveCounter = 9; break;
+				case 296: thisCell.status = "X WINS!"; $scope.moveCounter = 9; break;
+				case 448: thisCell.status = "X WINS!"; $scope.moveCounter = 9; break;
 				default: console.log("keep going");
 			};
 			switch($scope.oPoint){
@@ -54,7 +54,9 @@ $scope.playerPicks = function(thisCell){
 			};
 
 			if ($scope.moveCounter == 9) {
-				thisCell.status = "Game over.";
+				thisCell.status = "Game over!";
+				console.log("Game Over!");
+				break;
 			}
 
 	} // while loop
