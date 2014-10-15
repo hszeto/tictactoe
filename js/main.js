@@ -7,32 +7,26 @@ $scope.board = [{status:"Blank", pt:1}, {status:"Blank", pt:2},  {status:"Blank"
 				{status:"Blank", pt:64},{status:"Blank", pt:128},{status:"Blank", pt:256}];
 
 
-//$scope.makeMove = function(){
-//					console.log(this.$index, this.eachCell.pt);
-//				};
-
+// init variables
 $scope.gameStatus="Game On!"
 $scope.moveCounter = 0;
 $scope.xPoint = 0;
 $scope.oPoint = 0;
 
-$scope.playerPicks = function(thisCell){
-		
-		console.log("Cell was: " + thisCell.status);
-
-	while ((thisCell.status == "Blank") && ($scope.gameStatus=="Game On!")) {
-		$scope.moveCounter = $scope.moveCounter + 1;
-			if (($scope.moveCounter % 2) != 0){
-				thisCell.status = "X";
+$scope.playerPicks = function(thisCell){										// function playerPicks starts 
+	while ((thisCell.status == "Blank") && ($scope.gameStatus=="Game On!")) {	// check for blank cells and game status is on.
+		$scope.moveCounter = $scope.moveCounter + 1;							// increase move counter
+			if (($scope.moveCounter % 2) != 0){									// if move counter is odd, then it's X's move.
+				thisCell.status = "X";				
 				thisCell.image = "images/bigX.png";
-				$scope.xPoint = $scope.xPoint + thisCell.pt ;
-			} else if (($scope.moveCounter % 2) == 0){
+				$scope.xPoint = $scope.xPoint + thisCell.pt ;					// increase X points.
+			} else if (($scope.moveCounter % 2) == 0){							// if move counter is even, then it's O's move.
 				thisCell.status = "O";
 				thisCell.image = "images/bigO.png";
-				$scope.oPoint = $scope.oPoint + thisCell.pt ;
+				$scope.oPoint = $scope.oPoint + thisCell.pt ;					// increase O points.
 			} 
 
-			switch($scope.xPoint){
+			switch($scope.xPoint){												// Win logic. Case match X points.
 				case 7 : thisCell.status = "X WINS!"; $scope.moveCounter == 9; $scope.xWin(); break;
 				case 56 : thisCell.status = "X WINS!"; $scope.moveCounter == 9; $scope.xWin(); break;
 				case 73 : thisCell.status = "X WINS!"; $scope.moveCounter == 9; $scope.xWin(); break;
@@ -43,7 +37,7 @@ $scope.playerPicks = function(thisCell){
 				case 448: thisCell.status = "X WINS!"; $scope.moveCounter == 9; $scope.xWin(); break;
 				default: console.log("keep going");
 			};
-			switch($scope.oPoint){
+			switch($scope.oPoint){												// Win logic. Case match O points.
 				case 7  : thisCell.status = "O WINS!"; $scope.moveCounter == 9; $scope.oWin(); break;
 				case 56 : thisCell.status = "O WINS!"; $scope.moveCounter == 9; $scope.oWin(); break;
 				case 73 : thisCell.status = "O WINS!"; $scope.moveCounter == 9; $scope.oWin(); break;
@@ -55,38 +49,26 @@ $scope.playerPicks = function(thisCell){
 				default: console.log("keep going");
 			};
 
-			if ($scope.moveCounter == 9) {
-				// thisCell.status = "Game over!";
-				// console.log("Game Over!");
+			if ($scope.moveCounter == 9) {										// fire gameover function when max move is reached.
 				$scope.gameOver()
 				break;
 			}
-	} // while loop
-}; // function playerPicks
+	} // while loop ends
+}; // function playerPicks ends
 
-$scope.xWin = function(){
+$scope.xWin = function(){														// X win function
 	$scope.gameXstatus="Player X WINS!";
 	$scope.gameOver();
 };
 
-$scope.oWin = function(){
+$scope.oWin = function(){														// O win function
 	$scope.gameOstatus="Player O WINS!";
 	$scope.gameOver();
 };
 
-$scope.gameOver = function(){
+$scope.gameOver = function(){													// Game Over function
 	$scope.gameStatus="G A M E  O V E R  !";
 };
 
-//$scope.playerPicks = function(thisCell){
-//	$scope.moveCounter = $scope.moveCounter + 1;
-//	console.log("Cell was: " + thisCell.status);
-//	if ((thisCell.status == "Blank") && ($scope.moveCounter %2) == 0){
-//		thisCell.status = "X";
-//	} else if ((thisCell.status == "Blank") && ($scope.moveCounter %2) == 1){
-//		thisCell.status = "O";
-//	}
-//	console.log("Cell is now: " + thisCell.status);
-//};
 
 }); // end of TTTController

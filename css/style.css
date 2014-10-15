@@ -2,6 +2,10 @@ body{
 	text-align: center;
 	width: 100%;
 	font-family: Arial;
+	background-image: url('../images/mi_bckgnd.png');
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
 }
 
 #container{
