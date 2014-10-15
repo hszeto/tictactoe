@@ -16,20 +16,24 @@
 
 	<div id="left_div">
 		<h2>Player X</h2>
+		<p>{{gameXstatus}}</p>
 	</div>
 
 	<div id="mid_div">
-		<h2>The Board</h2>
+		<h2>{{gameStatus}}</h2>
 		<div 	class = "cell" 
 				ng-repeat = "eachCell in board" 
 				ng-class = "{clearFix: (eachCell.pt == 8) || (eachCell.pt == 64)}"
 		 		ng-click = "playerPicks(eachCell)">
-					{{eachCell.status}}, {{eachCell.pt}} point, {{moveCounter}} valid click, O point {{oPoint}}, X point {{xPoint}}
+		 		<img ng-src={{eachCell.image}}>
+<!--				{{eachCell.status}}, {{eachCell.pt}} point, {{moveCounter}} valid click, O point {{oPoint}}, X point {{xPoint}}
+-->
 		 </div>
 	</div>
 
 	<div id="right_div">
 		<h2>Player O</h2>
+		<p>{{gameOstatus}}</p>
 	</div>
 
 </div>

@@ -10,20 +10,20 @@ body{
 }
 
 #top_div{
-	background-color: darkgrey;
+	background-color: grey;
 	width: 960px;
 	margin-bottom: 10px;
 }
 
 #left_div{
-	background-color: lightgrey;
+	background-color: darkgrey;
 	width: 245px;
 	float: left;
 	margin-right: 5px;
 }
 
 #mid_div{
-	background-color: silver;
+	background-color: lightgrey;
 	width: 450px;
 	float: left;
 	margin-right: 5px;
@@ -31,7 +31,7 @@ body{
 }
 
 #right_div{
-	background-color: lightgrey;
+	background-color: darkgrey;
 	width: 245px;
 	float: left;
 	margin-left: 5px
@@ -41,7 +41,7 @@ body{
 	width: 146px; 
 	height: 146px; 
 	float: left; 
-	border: 2px dashed lightgrey;
+	border: 2px solid darkgrey;
 }
 			
 .clearFix {
