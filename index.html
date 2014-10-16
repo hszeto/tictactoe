@@ -5,13 +5,13 @@
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
 	<script src="js/main.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
 </head>
 <body ng-controller="TTTController">
 <div id="container">
 
 	<div id="top_div">
-		<h1>Tic Tac Toe</h1>
-		<h2>Let's play a game!</h2>
+		<h1>The Truth is out There</h1>
 	</div>
 
 	<div id="left_div">
@@ -20,7 +20,6 @@
 	</div>
 
 	<div id="mid_div">
-		<h2>{{gameStatus}}</h2>
 		<div 	class = "cell" 
 				ng-repeat = "eachCell in board" 
 				ng-class = "{clearFix: (eachCell.pt == 8) || (eachCell.pt == 64)}"
@@ -29,6 +28,8 @@
 <!--				{{eachCell.status}}, {{eachCell.pt}} point, {{moveCounter}} valid click, O point {{oPoint}}, X point {{xPoint}}
 r-->
 		 </div>
+		 <br><br>
+		 <h1>{{gameStatus}}</h1>
 	</div>
 
 	<div id="right_div">

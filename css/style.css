@@ -1,11 +1,13 @@
 body{
+	position: absolute;
 	text-align: center;
 	width: 100%;
-	font-family: Arial;
-	background-image: url('../images/mi_bckgnd.png');
+	font-family: 'Special Elite', cursive;
+	color: white;
+	background-image: url('../images/xfile_bckgnd.png');
 	background-repeat: no-repeat;
     background-attachment: fixed;
-    background-position: center; 
+    background-position: center;
 }
 
 #container{
@@ -14,38 +16,50 @@ body{
 }
 
 #top_div{
-	background-color: grey;
-	width: 960px;
+/*	background-color: grey;
+*/
+	width: 960x;
 	margin-bottom: 10px;
+/*	border: 1px solid lightgrey;
+*/
 }
 
 #left_div{
-	background-color: darkgrey;
+/*	background-color: darkgrey;
+*/
 	width: 245px;
 	float: left;
 	margin-right: 5px;
+/*	border: 1px solid lightgrey;
+*/
 }
 
 #mid_div{
-	background-color: lightgrey;
+/*	background-color: lightgrey;
+*/
 	width: 450px;
 	float: left;
 	margin-right: 5px;
 	margin-left: 5px;
+/*	border: 1px solid lightgrey;
+*/
 }
 
 #right_div{
-	background-color: darkgrey;
+/*	background-color: darkgrey;
+*/
 	width: 245px;
 	float: left;
-	margin-left: 5px
+	margin-left: 5px;
+/*	border: 1px solid lightgrey;
+*/
 }
 
 .cell {
-	width: 146px; 
-	height: 146px; 
+	width: 148px; 
+	height: 148px; 
 	float: left; 
-	border: 2px solid darkgrey;
+	border: 1px solid lightgrey;
 }
 			
 .clearFix {
