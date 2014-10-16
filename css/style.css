@@ -27,13 +27,13 @@ body{
 }
 
 #left_div{
-/*	background-color: darkgrey;
-*/
 	width: 245px;
 	float: left;
 	margin-right: 5px;
 /*	border: 1px solid lightgrey;
 */
+	background-color: rgba(44, 44, 44, 0.4);
+
 }
 
 #mid_div{
@@ -48,24 +48,23 @@ body{
 }
 
 #right_div{
-/*	background-color: darkgrey;
-*/
 	width: 245px;
 	float: left;
 	margin-left: 5px;
 /*	border: 1px solid lightgrey;
 */
+	background-color: rgba(44, 44, 44, 0.4);
 }
 
 .cell {
-	width: 148px; 
-	height: 148px; 
+	width: 150px; 
+	height: 150px; 
 	float: left; 
 /*	border: 1px solid lightgrey;
-*/
-background-color: rgba(49, 44, 44, 0.4);
-background: rgba(49, 44, 44, 0.4);
-color: rgba(49, 44, 44, 0.4);
+	background: rgba(49, 44, 44, 0.4);
+*/	
+	background-color: rgba(49, 44, 44, 0.4);
+	color: rgba(49, 44, 44, 0.4);
 }
 			
 .clearFix {

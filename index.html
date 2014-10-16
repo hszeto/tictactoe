@@ -7,6 +7,7 @@
 	<script src="js/main.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
 </head>
+
 <body ng-controller="TTTController">
 <div id="container">
 
@@ -24,11 +25,10 @@
 				ng-repeat = "eachCell in board" 
 				ng-class = "{clearFix: (eachCell.pt == 8) || (eachCell.pt == 64)}"
 		 		ng-click = "playerPicks(eachCell)">
-		 		<img ng-src={{eachCell.image}}>
+		 											<img ng-src={{eachCell.image}}>
 <!--				{{eachCell.status}}, {{eachCell.pt}} point, {{moveCounter}} valid click, O point {{oPoint}}, X point {{xPoint}}
 r-->
 		 </div>
-		 <br><br>
 		 <h1>{{gameStatus}}</h1>
 	</div>
 
