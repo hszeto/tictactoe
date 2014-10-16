@@ -4,7 +4,9 @@ body{
 	width: 100%;
 	font-family: 'Special Elite', cursive;
 	color: white;
-	background-image: url('../images/xfile_bckgnd.png');
+	background-color: black;
+/*	background-image: url('../images/xfile_bckgnd.png');
+*/
 	background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
@@ -59,7 +61,11 @@ body{
 	width: 148px; 
 	height: 148px; 
 	float: left; 
-	border: 1px solid lightgrey;
+/*	border: 1px solid lightgrey;
+*/
+background-color: rgba(49, 44, 44, 0.4);
+background: rgba(49, 44, 44, 0.4);
+color: rgba(49, 44, 44, 0.4);
 }
 			
 .clearFix {
