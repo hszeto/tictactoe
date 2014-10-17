@@ -1,11 +1,13 @@
-var TTT = angular.module('henryTTT', []);
+var TTT = angular.module('TTT', ["firebase"]);
 
-TTT.controller('TTTController', function($scope){
+TTT.controller('TTTController', function($scope, $firebase){
+
+$scope.remoteGameContainer = 				// define the location to Firebase
+  $firebase(new Firebase("https://ttt-henry.firebaseIO.com/databaseGameContainer")) ;
 
 $scope.board = [{status:"Blank", pt:1}, {status:"Blank", pt:2},  {status:"Blank", pt:4},
 				{status:"Blank", pt:8}, {status:"Blank", pt:16}, {status:"Blank", pt:32},
 				{status:"Blank", pt:64},{status:"Blank", pt:128},{status:"Blank", pt:256}];
-
 
 // init variables
 $scope.gameStatus="Game On!"
@@ -13,15 +15,28 @@ $scope.moveCounter = 0;
 $scope.xPoint = 0;
 $scope.oPoint = 0;
 
+// Special Sauce. My local stuffs that I want to load to Firebase
+$scope.gameContainer = {
+	boardArray: $scope.board,
+	moveCount: $scope.moveCounter
+};
+
+// Angular stuffs. Connect my local stuffs to/from Firebase
+$scope.remoteGameContainer.$bind($scope, "gameContainer");
+$scope.$watch('gameContainer', function(){
+	console.log('gameContainer changed!');
+});
+
+// function Starts
 $scope.playerPicks = function(thisCell){										// function playerPicks starts 
 	while ((thisCell.status == "Blank") && ($scope.gameStatus=="Game On!")) {	// check for blank cells and game status is on.
-		$scope.moveCounter = $scope.moveCounter + 1;							// increase move counter
+		$scope.gameContainer.moveCount = $scope.gameContainer.moveCount + 1;							// increase move counter
 
-			if (($scope.moveCounter % 2) != 0){									// if move counter is odd, then it's X's move.
+			if (($scope.gameContainer.moveCount % 2) != 0){									// if move counter is odd, then it's X's move.
 				thisCell.status = "X";				
 				thisCell.image = "images/bigX.png";
 				$scope.xPoint = $scope.xPoint + thisCell.pt ;					// increase X points.
-			} else if (($scope.moveCounter % 2) == 0){							// if move counter is even, then it's O's move.
+			} else if (($scope.gameContainer.moveCount % 2) == 0){							// if move counter is even, then it's O's move.
 				thisCell.status = "O";
 				thisCell.image = "images/bigO.png";
 				$scope.oPoint = $scope.oPoint + thisCell.pt ;					// increase O points.
@@ -55,7 +70,7 @@ $scope.playerPicks = function(thisCell){										// function playerPicks starts
 				};
 			};
 
-			 if ($scope.moveCounter == 9) {										// fire gameover function when max move is reached.
+			 if ($scope.gameContainer.moveCount == 9) {										// fire gameover function when max move is reached.
 				$scope.gameOver();
 				break;
 			}
@@ -64,18 +79,17 @@ $scope.playerPicks = function(thisCell){										// function playerPicks starts
 }; // function playerPicks ends
 
 $scope.xWin = function(){														// X win function
-	$scope.gameXstatus="Player X WINS!";
+	$scope.gameXstatus="Fox Mulder WINS!";
 	$scope.gameOver();
 };
 
 $scope.oWin = function(){														// O win function
-	$scope.gameOstatus="Player O WINS!";
+	$scope.gameOstatus="Dana Scully WINS!";
 	$scope.gameOver();
 };
 
 $scope.gameOver = function(){													// Game Over function
 	$scope.gameStatus="G A M E  O V E R  !";
-};
-
+}
 
 }); // end of TTTController
