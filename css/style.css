@@ -3,13 +3,21 @@ body{
 	text-align: center;
 	width: 100%;
 	font-family: 'Special Elite', cursive;
-	color: white;
-/*	background-color: black;
-*/
+	color: #888888;
+	background-image: url('../images/spyvsspy.jpg');
+/*	background-color: black; 
 	background-image: url('../images/xfile_bckgnd.png');
-	background-repeat: no-repeat;
+*/	background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;
+}
+
+#agentname{
+	width: 200px;
+	height: 30px;
+	padding-top: 20px;
+	margin: 0 auto;
+	font-size: 30px;
 }
 
 #container{
@@ -30,6 +38,7 @@ body{
 	width: 245px;
 	float: left;
 	margin-right: 5px;
+	border-radius: 10px;
 /*	border: 1px solid lightgrey;
 */
 	background-color: rgba(44, 44, 44, 0.4);
@@ -51,6 +60,7 @@ body{
 	width: 245px;
 	float: left;
 	margin-left: 5px;
+	border-radius: 10px;
 /*	border: 1px solid lightgrey;
 */
 	background-color: rgba(44, 44, 44, 0.4);
@@ -59,22 +69,22 @@ body{
 .cell {
 	width: 150px; 
 	height: 150px; 
-	float: left; 
+	float: left;
 /*	border: 1px solid lightgrey;
 	background: rgba(49, 44, 44, 0.4);
 */	
 	background-color: rgba(49, 44, 44, 0.4);
-	color: rgba(49, 44, 44, 0.4);
+	color: rgba(49, 44, 44, 0.9);
+} 
+
+.wsclass{
+	background-image: url('../images/whitespy.png');
 }
 
-/*.xclass{
-	background-image: url(./images/bigX.png);
+.bsclass{
+	background-image: url('../images/blackspy.png');
 }
-
-.oclass{
-	background-image: url(../images/bigO.png);
-} */
 			
-.clearFix {
+/* .clearFix {
 	clear:both;
-}
+} */

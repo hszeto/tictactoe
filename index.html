@@ -11,7 +11,8 @@
     <!-- Firebase -->
     <script src="https://cdn.firebase.com/js/client/1.0.21/firebase.js"></script>
     <!-- AngularFire -->
-    <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+    	<!-- <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script> -->
+    <script src="https://cdn.firebase.com/libs/angularfire/0.6.0/angularfire.min.js"></script> 
     <!-- App javascript -->
     <script src="js/main.js"></script>
     <!-- Google font -->
@@ -22,34 +23,36 @@
 <div id="container">
 
 	<div id="top_div">
-		<h1>The Truth is out There</h1>
+		<h1>Tic Tac Spy</h1>
+		<h2>{{gameStatus}}</h2>
+		<p>Pick White Spy or Black Spy to start</p>
 	</div>
 
 	<div id="left_div">
-		<h2>Fox Mulder</h2>
-		<p>{{gameXstatus}}</p>
+		<div id="agentname" ng-click="currentPlayer('left')">White Spy</div>
+		<p>White Spy Score Counter: {{wsWinCount}}</p>
+		<div>{{showLeft}}</div>
 	</div>
 
 	<div id="mid_div">
-		<div 	class = "cell" 
+		<div 	class="cell" 
 				ng-repeat = "eachCell in gameContainer.boardArray" 
-				ng-class = "{clearFix: (eachCell.pt == 8) || (eachCell.pt == 64)}" 
-		 		ng-click = "playerPicks(eachCell)"
-		 		>
-		 			<img ng-src={{eachCell.image}}>
-
-<!--				{{eachCell.status}}, {{eachCell.pt}} point, {{moveCounter}} valid click, O point {{oPoint}}, X point {{xPoint}}
--->
+		 		ng-click = "playerPicks(eachCell)" 
+		 		ng-class = "{wsclass: eachCell.status=='W', bsclass: eachCell.status =='B'}">
 		 </div>
-		 <h1>{{gameStatus}}</h1>
-
+		 <button ng-click="gameRestart()">Restart</button>
 	</div>
 
 	<div id="right_div">
-		<h2>Dana Scully</h2>
-		<p>{{gameOstatus}}</p>
+		<div id="agentname" ng-click="currentPlayer('right')">Black Spy</div>
+		<p>Black Spy Score Counter: {{bsWinCount}}</p>
+		<div>{{showRight}}</div>
 	</div>
 
 </div>
 </body>
 </html>
+
+<!-- ng-class = "{clearFix: (eachCell.pt == 8) || (eachCell.pt == 64)}"  -->
+<!-- <img ng-src={{eachCell.image}}> 
+{{eachCell.status}}, {{eachCell.pt}} point, O point {{oPoint}}, X point {{xPoint}}-->
