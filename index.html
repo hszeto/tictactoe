@@ -25,7 +25,7 @@
 	<div id="top_div">
 		<h1>Tic Tac Spy</h1>
 		<h2>{{gameStatus}}</h2>
-		<p>Pick White Spy or Black Spy to start</p>
+		<h3>Click White Spy or Black Spy to go first.</h3>
 	</div>
 
 	<div id="left_div">
@@ -40,7 +40,7 @@
 		 		ng-click = "playerPicks(eachCell)" 
 		 		ng-class = "{wsclass: eachCell.status=='W', bsclass: eachCell.status =='B'}">
 		 </div>
-		 <button ng-click="gameRestart()">Restart</button>
+		 <button id="btn_style" ng-click="gameRestart()">Spy Again</button>
 	</div>
 
 	<div id="right_div">
