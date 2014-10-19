@@ -53,7 +53,7 @@ body{
 	margin-right: 5px;
 	margin-left: 5px;
 	background-image: url('../images/svss_board.png');
-	
+	background-repeat: no-repeat;
 /*	border: 1px solid lightgrey;
 */
 }

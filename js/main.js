@@ -77,7 +77,7 @@ $scope.playerPicks = function(thisCell){										// function playerPicks starts
 }; // function playerPicks ends
 
 $scope.firstPlayerWin = function(){												// First player won
-	$scope.gameStatus="First Player Won!";
+	$scope.gameStatus="First Player Wins!";
 		if ($scope.playFirst == "W") {
 			$scope.showLeft = "White Spy Wins!";
 			$scope.wsWinCount ++;
@@ -88,7 +88,7 @@ $scope.firstPlayerWin = function(){												// First player won
 };
 
 $scope.secondPlayerWin = function(){											// Second player won
-	$scope.gameStatus="Second Player Won!";
+	$scope.gameStatus="Second Player Wins!";
 		if ($scope.playSecond == "W") {
 			$scope.showLeft = "White Spy Wins!";
 			$scope.wsWinCount ++;
