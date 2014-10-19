@@ -103,7 +103,6 @@ $scope.gameOver = function(){													// Game Over function
 };
 
 $scope.gameRestart = function(){												// Restart game
-		console.log("gameRestart fired");
 	$scope.gameContainer.boardArray = 	[{status:"Blank", pt:1}, {status:"Blank", pt:2},  {status:"Blank", pt:4},
 										{status:"Blank", pt:8}, {status:"Blank", pt:16}, {status:"Blank", pt:32},
 										{status:"Blank", pt:64},{status:"Blank", pt:128},{status:"Blank", pt:256}];

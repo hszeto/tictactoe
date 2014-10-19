@@ -52,6 +52,8 @@ body{
 	float: left;
 	margin-right: 5px;
 	margin-left: 5px;
+	background-image: url('../images/svss_board.png');
+	
 /*	border: 1px solid lightgrey;
 */
 }
