@@ -2,9 +2,9 @@ var TTT = angular.module('TTT', ["firebase"]);
 
 TTT.controller('TTTController', function($scope, $firebase){
 
-$scope.remoteGameContainer = 				// define the location to Firebase
+$scope.remoteGameContainer = 												// Define the location to Firebase
   $firebase(new Firebase("https://ttt-henry.firebaseIO.com/databaseGameContainer")) ;
-
+  																			// Initial cell condition
 $scope.board = [{status:"Blank", pt:1}, {status:"Blank", pt:2},  {status:"Blank", pt:4},
 				{status:"Blank", pt:8}, {status:"Blank", pt:16}, {status:"Blank", pt:32},
 				{status:"Blank", pt:64},{status:"Blank", pt:128},{status:"Blank", pt:256}];
@@ -30,7 +30,7 @@ $scope.$watch('gameContainer', function(){
 	console.log('gameContainer changed!');
 });
 
-$scope.currentPlayer = function(who){
+$scope.currentPlayer = function(who){											// Determine left or right side play first.
 	if (who=="left") {
 		$scope.playFirst ="W";
 		$scope.playSecond ="B";
@@ -45,31 +45,31 @@ $scope.playerPicks = function(thisCell){										// function playerPicks starts
 	if ((thisCell.status == "Blank") && ($scope.gameStatus=="Game On!")) {		// check for blank cells and game status is on.
 		$scope.gameContainer.moveCount = $scope.gameContainer.moveCount + 1;	// increase move counter
 
-			if (($scope.gameContainer.moveCount % 2) != 0){						// if move counter is odd, then it's X's move.
+			if (($scope.gameContainer.moveCount % 2) != 0){						// if move counter is odd, then it's P1 move.
 //				thisCell.status = "X";			
 				thisCell.status = $scope.playFirst;
-				$scope.p1Point = $scope.p1Point + thisCell.pt ;					// increase X points.
-			} else if (($scope.gameContainer.moveCount % 2) == 0){				// if move counter is even, then it's O's move.
+				$scope.p1Point = $scope.p1Point + thisCell.pt ;					// increase P1 points.
+			} else if (($scope.gameContainer.moveCount % 2) == 0){				// if move counter is even, then it's P2 move.
 //				thisCell.status = "O";
 				thisCell.status = $scope.playSecond;
-				$scope.p2Point = $scope.p2Point + thisCell.pt ;					// increase O points.
+				$scope.p2Point = $scope.p2Point + thisCell.pt ;					// increase P2 points.
 			} ;
 
 			var winPoint = [7,56,73,84,146,273,292,448];						// 8 possible winning points in array.
 
-			for (var i=0; i<8; i++){											// Da Win Logic!
-				if ((winPoint[i] & $scope.p1Point) == winPoint[i]){				// binary check winPoint & xPoint
-					console.log("p1 win. from For loop.")						// if binary of winPoint & xPoint = winPoint
+			for (var i=0; i<8; i++){											// The Win Logic!
+				if ((winPoint[i] & $scope.p1Point) == winPoint[i]){				// Binary check winPoint & first player point
+					console.log("p1 win. from For loop.")						// If binary of winPoint & p1Point = winPoint
 					$scope.firstPlayerWin();												// fire the xWin function
 				};																
-				if ((winPoint[i] & $scope.p2Point) == winPoint[i]){				// binary check winPoint & oPoint
-					console.log("p2 win. from For loop.")						// if binary of winPoint & oPoint = winPoint
+				if ((winPoint[i] & $scope.p2Point) == winPoint[i]){				// Binary check winPoint & second player point
+					console.log("p2 win. from For loop.")						// If binary of winPoint & p2Point = winPoint
 					$scope.secondPlayerWin();												// fire the oWin function
 				};
 			};
 
 	}; // end if
-		 	if ($scope.gameContainer.moveCount == 9) {							// fire gameover function when max move is reached
+		 	if ($scope.gameContainer.moveCount == 9) {							// Fire game-over function when max move is reached
 				$scope.gameOver();
 			}; // end if
 
