@@ -99,7 +99,7 @@ $scope.secondPlayerWin = function(){											// Second player won
 };
 
 $scope.gameOver = function(){													// Game Over function
-	$scope.gameStatus="G A M E  O V E R  !";
+	$scope.gameStatus="TIE! Game Over!";
 };
 
 $scope.gameRestart = function(){												// Restart game
@@ -112,12 +112,14 @@ $scope.gameRestart = function(){												// Restart game
 	$scope.gameContainer.moveCount = 0;
 	$scope.p1Point = 0;
 	$scope.p2Point = 0;
+	$scope.showLeft = "";
+	$scope.showRight= "";
 };
 
 }); // end of TTTController
 
 
-
+//--------------------------------------------------------------------------------------------------------
 // 			*** Win Logic Explaination ***
 //	
 //		 			 1 |   2 |  4    	<- row total 7pt
@@ -135,35 +137,9 @@ $scope.gameRestart = function(){												// Restart game
 // If X is on the top row, X gets a total of 7pt.
 // Compare xPoint with winPoint by Binary. 7&7 = 7. 7 = one of the winning number in the array. so X wins.
 
-//			*** OLD WORKING CODE ***
-// --------------------------------------------------------------------------------------------------------------
-// OLD WIN LOGIC
-//			for (var i=0; i<8; i++) {
-//				switch(winPoint[i] & $scope.xPoint){							// Win logic. Case match X points.
-//					case 7 : thisCell.status = "X WINS!"; $scope.xWin(); break;
-//					case 56 : thisCell.status = "X WINS!"; $scope.xWin(); break;
-//					case 73 : thisCell.status = "X WINS!"; $scope.xWin(); break;
-//					case 84 : thisCell.status = "X WINS!"; $scope.xWin(); break;
-//					case 146 : thisCell.status = "X WINS!"; $scope.xWin(); break;
-//					case 273 : thisCell.status = "X WINS!"; $scope.xWin(); break;
-//					case 292 : thisCell.status = "X WINS!"; $scope.xWin(); break;
-//					case 448 : thisCell.status = "X WINS!"; $scope.xWin(); break;
-//					default: return;
-//				};
-//			
-//				switch(winPoint[i] & $scope.oPoint){							// Win logic. Case match O points.
-//					case 7 : thisCell.status = "O WINS!"; $scope.oWin(); break;
-//					case 56 : thisCell.status = "O WINS!"; $scope.oWin(); break;
-//					case 73 : thisCell.status = "O WINS!"; $scope.oWin(); break;
-//					case 84 : thisCell.status = "O WINS!"; $scope.oWin(); break;
-//					case 146: thisCell.status = "O WINS!"; $scope.oWin(); break;
-//					case 273: thisCell.status = "O WINS!"; $scope.oWin(); break;
-//					case 292: thisCell.status = "O WINS!"; $scope.oWin(); break;
-//					case 448: thisCell.status = "O WINS!"; $scope.oWin(); break;
-//					default: console.log("keep going");
-//				};
-//			};
-
-// --------------------------------------------------------------------------------------------------------------
-//thisCell.image = "images/bigX.png";
-//thisCell.image = "images/bigO.png";
+//--------------------------------------------------------------------------------------------------------
+// 			*** Possible Player vs Computer logic ***
+// $scope.vsComp = function (comp){
+//	var boardPosition=[1,2,4,8,16,32,64,128,256];
+//	$scope.compPick = boardPosition[Math.floor(Math.random() * 9)];
+// };
