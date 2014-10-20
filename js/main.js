@@ -21,6 +21,7 @@ $scope.bsWinCount = 0;
 $scope.gameContainer = {
 	boardArray: $scope.board,
 	moveCount: $scope.moveCounter,
+	gameSta: $scope.gameStatus,      // $scope.gameContainer.gameSta ~ $scope.gameStatus
 	notification: ""
 };
 
@@ -31,10 +32,10 @@ $scope.$watch('gameContainer', function(){
 });
 
 $scope.currentPlayer = function(who){											// Determine left or right side play first.
-	if (who=="left") {
+	if ((who=="left") && ($scope.gameContainer.moveCount == 0)) {
 		$scope.playFirst ="W";
 		$scope.playSecond ="B";
-	} else if (who=="right") {
+	} else if ((who=="right") && ($scope.gameContainer.moveCount == 0)) {
 		$scope.playFirst ="B";
 		$scope.playSecond ="W";
 	}; 
@@ -42,7 +43,7 @@ $scope.currentPlayer = function(who){											// Determine left or right side 
 
 // function Starts
 $scope.playerPicks = function(thisCell){										// function playerPicks starts 
-	if ((thisCell.status == "Blank") && ($scope.gameStatus=="Game On!")) {		// check for blank cells and game status is on.
+	if ((thisCell.status == "Blank") && ($scope.gameContainer.gameSta=="Game On!")) {		// check for blank cells and game status is on.
 		$scope.gameContainer.moveCount = $scope.gameContainer.moveCount + 1;	// increase move counter
 
 			if (($scope.gameContainer.moveCount % 2) != 0){						// if move counter is odd, then it's P1 move.
@@ -77,7 +78,7 @@ $scope.playerPicks = function(thisCell){										// function playerPicks starts
 }; // function playerPicks ends
 
 $scope.firstPlayerWin = function(){												// First player won
-	$scope.gameStatus="First Player Wins!";
+	$scope.gameContainer.gameSta="First Player Wins!";
 		if ($scope.playFirst == "W") {
 			$scope.showLeft = "White Spy Wins!";
 			$scope.wsWinCount ++;
@@ -88,7 +89,7 @@ $scope.firstPlayerWin = function(){												// First player won
 };
 
 $scope.secondPlayerWin = function(){											// Second player won
-	$scope.gameStatus="Second Player Wins!";
+	$scope.gameContainer.gameSta="Second Player Wins!";
 		if ($scope.playSecond == "W") {
 			$scope.showLeft = "White Spy Wins!";
 			$scope.wsWinCount ++;
@@ -99,7 +100,7 @@ $scope.secondPlayerWin = function(){											// Second player won
 };
 
 $scope.gameOver = function(){													// Game Over function
-	$scope.gameStatus="TIE! Game Over!";
+	$scope.gameContainer.gameSta="TIE! Game Over!";
 };
 
 $scope.gameRestart = function(){												// Restart game
@@ -107,7 +108,7 @@ $scope.gameRestart = function(){												// Restart game
 										{status:"Blank", pt:8}, {status:"Blank", pt:16}, {status:"Blank", pt:32},
 										{status:"Blank", pt:64},{status:"Blank", pt:128},{status:"Blank", pt:256}];
 	// init variables
-	$scope.gameStatus="Game On!";
+	$scope.gameContainer.gameSta="Game On!";
 	$scope.gameContainer.moveCount = 0;
 	$scope.p1Point = 0;
 	$scope.p2Point = 0;
