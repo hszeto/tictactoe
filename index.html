@@ -30,7 +30,7 @@
 
 	<div id="left_div">
 		<span id="spyname" ng-click="currentPlayer('left')"><img src='images/white_spy_thumbnail.png'/>White Spy</span>
-		<p>White Spy Score Counter: {{wsWinCount}}</p>
+		<p>White Spy Score Counter: {{gameContainer.wsWinC}}</p>
 		<div>{{showLeft}}</div>
 	</div>
 
@@ -45,7 +45,7 @@
 
 	<div id="right_div">
 		<span id="spyname" ng-click="currentPlayer('right')">Black Spy<img src='images/black_spy_thumbnail.png'/></span>
-		<p>Black Spy Score Counter: {{bsWinCount}}</p>
+		<p>Black Spy Score Counter: {{gameContainer.bsWinC}}</p>
 		<div>{{showRight}}</div>
 	</div>
 

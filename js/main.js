@@ -4,6 +4,7 @@ TTT.controller('TTTController', function($scope, $firebase){
 
 $scope.remoteGameContainer = 												// Define the location to Firebase
   $firebase(new Firebase("https://ttt-henry.firebaseIO.com/databaseGameContainer")) ;
+  //$firebase(new Firebase("https://ttt-henry.firebaseIO.com/databaseGameContainer")) ;
   																			// Initial cell condition
 $scope.board = [{status:"Blank", pt:1}, {status:"Blank", pt:2},  {status:"Blank", pt:4},
 				{status:"Blank", pt:8}, {status:"Blank", pt:16}, {status:"Blank", pt:32},
@@ -16,12 +17,21 @@ $scope.p1Point = 0;
 $scope.p2Point = 0;
 $scope.wsWinCount = 0;
 $scope.bsWinCount = 0;
+$scope.playFirst ="W";
+$scope.playSecond ="B";
 
 // Special Sauce. My local stuffs that I want to load to Firebase
 $scope.gameContainer = {
 	boardArray: $scope.board,
-	moveCount: $scope.moveCounter,
 	gameSta: $scope.gameStatus,      // $scope.gameContainer.gameSta ~ $scope.gameStatus
+	moveCount: $scope.moveCounter,
+
+	p1Pt: $scope.p1Point,
+	p2Pt: $scope.p2Point,
+	wsWinC: $scope.wsWinCount,
+	bsWinC: $scope.bsWinCount,
+	play1st: $scope.playFirst,
+	play2nd: $scope.playSecond,
 	notification: ""
 };
 
@@ -33,11 +43,11 @@ $scope.$watch('gameContainer', function(){
 
 $scope.currentPlayer = function(who){											// Determine left or right side play first.
 	if ((who=="left") && ($scope.gameContainer.moveCount == 0)) {
-		$scope.playFirst ="W";
-		$scope.playSecond ="B";
+		$scope.gameContainer.play1st ="W";
+		$scope.gameContainer.play2nd ="B";
 	} else if ((who=="right") && ($scope.gameContainer.moveCount == 0)) {
-		$scope.playFirst ="B";
-		$scope.playSecond ="W";
+		$scope.gameContainer.play1st ="B";
+		$scope.gameContainer.play2nd ="W";
 	}; 
 };
 
@@ -47,23 +57,23 @@ $scope.playerPicks = function(thisCell){										// function playerPicks starts
 		$scope.gameContainer.moveCount = $scope.gameContainer.moveCount + 1;	// increase move counter
 
 			if (($scope.gameContainer.moveCount % 2) != 0){						// if move counter is odd, then it's P1 move.
-//				thisCell.status = "X";			
-				thisCell.status = $scope.playFirst;
-				$scope.p1Point = $scope.p1Point + thisCell.pt ;					// increase P1 points.
+//				thisCell.status = "X";	
+				thisCell.status = $scope.gameContainer.play1st;
+				$scope.gameContainer.p1Pt = $scope.gameContainer.p1Pt + thisCell.pt ;					// increase P1 points.
 			} else if (($scope.gameContainer.moveCount % 2) == 0){				// if move counter is even, then it's P2 move.
 //				thisCell.status = "O";
-				thisCell.status = $scope.playSecond;
-				$scope.p2Point = $scope.p2Point + thisCell.pt ;					// increase P2 points.
+				thisCell.status = $scope.gameContainer.play2nd;
+				$scope.gameContainer.p2Pt = $scope.gameContainer.p2Pt + thisCell.pt ;					// increase P2 points.
 			} ;
 
 			var winPoint = [7,56,73,84,146,273,292,448];						// 8 possible winning points in array.
 
 			for (var i=0; i<8; i++){											// The Win Logic!
-				if ((winPoint[i] & $scope.p1Point) == winPoint[i]){				// Binary check winPoint & first player point
+				if ((winPoint[i] & $scope.gameContainer.p1Pt) == winPoint[i]){				// Binary check winPoint & first player point
 					console.log("p1 win. from For loop.")						// If binary of winPoint & p1Point = winPoint
 					$scope.firstPlayerWin();												// fire the xWin function
 				};																
-				if ((winPoint[i] & $scope.p2Point) == winPoint[i]){				// Binary check winPoint & second player point
+				if ((winPoint[i] & $scope.gameContainer.p2Pt) == winPoint[i]){				// Binary check winPoint & second player point
 					console.log("p2 win. from For loop.")						// If binary of winPoint & p2Point = winPoint
 					$scope.secondPlayerWin();												// fire the oWin function
 				};
@@ -79,23 +89,23 @@ $scope.playerPicks = function(thisCell){										// function playerPicks starts
 
 $scope.firstPlayerWin = function(){												// First player won
 	$scope.gameContainer.gameSta="First Player Wins!";
-		if ($scope.playFirst == "W") {
+		if ($scope.gameContainer.play1st == "W") {
 			$scope.showLeft = "White Spy Wins!";
-			$scope.wsWinCount ++;
-		} else if ($scope.playFirst == "B") {
+			$scope.gameContainer.wsWinC ++;
+		} else if ($scope.gameContainer.play1st == "B") {
 			$scope.showRight = "Black Spy Wins!";
-			$scope.bsWinCount ++;
+			$scope.gameContainer.bsWinC ++;
 		};
 };
 
 $scope.secondPlayerWin = function(){											// Second player won
 	$scope.gameContainer.gameSta="Second Player Wins!";
-		if ($scope.playSecond == "W") {
+		if ($scope.gameContainer.play2nd == "W") {
 			$scope.showLeft = "White Spy Wins!";
-			$scope.wsWinCount ++;
-		} else if ($scope.playSecond == "B") {
+			$scope.gameContainer.wsWinC ++;
+		} else if ($scope.gameContainer.play2nd == "B") {
 			$scope.showRight = "Black Spy Wins!";
-			$scope.bsWinCount ++;
+			$scope.gameContainer.bsWinC ++;
 		};
 };
 
@@ -110,14 +120,13 @@ $scope.gameRestart = function(){												// Restart game
 	// init variables
 	$scope.gameContainer.gameSta="Game On!";
 	$scope.gameContainer.moveCount = 0;
-	$scope.p1Point = 0;
-	$scope.p2Point = 0;
+	$scope.gameContainer.p1Pt = 0;
+	$scope.gameContainer.p2Pt = 0;
 	$scope.showLeft = "";
 	$scope.showRight= "";
 };
 
 }); // end of TTTController
-
 
 //--------------------------------------------------------------------------------------------------------
 // 			*** Win Logic Explaination ***
