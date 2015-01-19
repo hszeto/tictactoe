@@ -16,12 +16,11 @@ Game logic write in Javascript.
 //		 			 8 |  16 | 32		<- row total 56pt<br>
 //					---------------<br>
 // 					64 | 128 | 256		<- row total 448pt<br>
-//		<br>
-//		 			^     ^     ^<br>
+//<br>
 // column total: 	73pt 146pt 292pt<br>
 // diagonal total: 	84pt and 273pt <br>
 //<br>
 // Array winPoint = [7,56,73,84,146,273,292,448];	<br>
 //<br>
-// If X is on the top row, X gets a total of 7pt.<br>
+// For example, if X is on the top row, X gets a total of 7pt.<br>
 // Compare xPoint with winPoint by Binary. 7&7 = 7. 7 = one of the winning number in the array. so X wins.
