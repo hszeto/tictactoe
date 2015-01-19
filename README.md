@@ -5,8 +5,9 @@ Project writen with Angular JS.
 Game logic write in Javascript.
 
 *** How To Play ***
-> Open index.html on browser
+> Open index.html on browser. <br>
 > Click white spy on the left or black spy on the right to start.
+
 > Click "Spy Again" to restart the game at any time. Will not affect Score counter.
 
 *** Win Logic Explaination ***
