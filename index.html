@@ -19,6 +19,7 @@
     <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
 </head>
 
+<!-- Angular controller in Body -->
 <body ng-controller="TTTController" ng-model="gameContainer">
 <div id="container">
 
@@ -28,12 +29,14 @@
 		<h3>Click White Spy or Black Spy to go first.</h3>
 	</div>
 
+	<!-- White Spy on left -->
 	<div id="left_div">
 		<span id="spyname" ng-click="currentPlayer('left')"><img src='images/white_spy_thumbnail.png'/>White Spy</span>
 		<p>White Spy Score Counter: {{gameContainer.wsWinC}}</p>
 		<div>{{showLeft}}</div>
 	</div>
 
+	<!-- Game Board -->
 	<div id="mid_div">
 		<div 	class="cell" 
 				ng-repeat = "eachCell in gameContainer.boardArray" 
@@ -43,6 +46,7 @@
 		 <button id="btn_style" ng-click="gameRestart()">Spy Again</button>
 	</div>
 
+	<!-- Black Spy on right -->
 	<div id="right_div">
 		<span id="spyname" ng-click="currentPlayer('right')">Black Spy<img src='images/black_spy_thumbnail.png'/></span>
 		<p>Black Spy Score Counter: {{gameContainer.bsWinC}}</p>
@@ -52,7 +56,3 @@
 </div>
 </body>
 </html>
-
-<!-- ng-class = "{clearFix: (eachCell.pt == 8) || (eachCell.pt == 64)}"  -->
-<!-- <img ng-src={{eachCell.image}}> 
-{{eachCell.status}}, {{eachCell.pt}} point, O point {{oPoint}}, X point {{xPoint}}-->
